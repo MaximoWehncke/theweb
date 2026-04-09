@@ -4,13 +4,13 @@ import { SectionHeading } from "./ProjectsSection";
 
 const contacts = [
   {
-    icon: Github,
+    icon: Code2,
     label: "GitHub",
     href: "https://github.com",
     display: "github.com/yourname",
   },
   {
-    icon: Linkedin,
+    icon: Link,
     label: "LinkedIn",
     href: "https://linkedin.com",
     display: "linkedin.com/in/yourname",

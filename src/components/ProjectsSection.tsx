@@ -85,7 +85,7 @@ const ProjectsSection = () => {
                     className="text-muted-foreground hover:text-primary transition-colors"
                     aria-label={`${p.title} GitHub`}
                   >
-                    <Github size={18} />
+                    <Code2 size={18} />
                   </a>
                   {p.demo && (
                     <a
