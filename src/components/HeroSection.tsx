@@ -42,7 +42,7 @@ const HeroSection = () => {
             Hi, my name is
           </p>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-4">
-            <span className="text-foreground">Your Name</span>
+            <span className="text-foreground">Maximo Wehncke</span>
             <span className="text-primary">.</span>
           </h1>
           <h2 className="text-2xl md:text-4xl font-bold text-muted-foreground mb-6">
