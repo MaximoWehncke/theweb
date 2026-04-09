@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Personal Portfolio
 
-TODO: Document your project here
+Portfolio website built using Next.js, React and Tailwind CSS.
