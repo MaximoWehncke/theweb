@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GitlabIcon as Github, LinkedinIcon as Linkedin, Mail } from "lucide-react";
+import { Code2, Link, Mail } from "lucide-react";
 import { SectionHeading } from "./ProjectsSection";
 
 const contacts = [
