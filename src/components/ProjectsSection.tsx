@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, GitlabIcon as Github } from "lucide-react";
 
 interface Project {
   title: string;
