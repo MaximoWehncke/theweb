@@ -1,3 +1,4 @@
+import { portfolio } from "@/data/portfolio";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 
@@ -105,10 +106,10 @@ const HeroSection = () => {
           className="max-w-2xl"
         >
           <p className="text-primary text-sm mb-4 tracking-wider">
-            Hi, my name is
+						{portfolio.hero.mini_intro}
           </p>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-4">
-            <span className="text-foreground">Maximo Wehncke</span>
+            <span className="text-foreground">{portfolio.hero.title}</span>
             <span className="text-primary">.</span>
           </h1>
           <h2 className="text-2xl md:text-4xl font-bold text-muted-foreground mb-6">

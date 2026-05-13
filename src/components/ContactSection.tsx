@@ -6,20 +6,20 @@ const contacts = [
   {
     icon: Code2,
     label: "GitHub",
-    href: "https://github.com",
-    display: "github.com/yourname",
+    href: "https://github.com/maximowehncke",
+    display: "github.com/maximowehncke",
   },
   {
     icon: Link,
     label: "LinkedIn",
-    href: "https://linkedin.com",
-    display: "linkedin.com/in/yourname",
+    href: "https://www.linkedin.com/in/m%C3%A1ximo-wehncke-b02197248/",
+    display: "linkedin.com/in/maxiomwehncke",
   },
   {
     icon: Mail,
     label: "Email",
-    href: "mailto:hello@example.com",
-    display: "hello@example.com",
+    href: "mailto:maximowehncke@gmail.com",
+    display: "maximowehncke@gmail.com",
   },
 ];
 

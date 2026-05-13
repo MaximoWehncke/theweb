@@ -80,7 +80,7 @@ const Navbar = () => {
             ))}
             <li>
               <a
-                href="/cv.pdf"
+                href="/CV.pdf"
                 className="text-sm px-4 py-2 rounded-md border border-primary text-primary inline-block"
               >
                 Resume
