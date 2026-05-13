@@ -22,18 +22,30 @@ const AboutSection = () => {
               intuitive user interfaces.
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              My approach to code is shaped by curiosity and a desire to
-              understand how things work under the hood. I'm always
-              experimenting with new technologies and building projects that
-              push my skills forward.
+              As AI tools become more integrated into software development, it’s
+              becoming easier to build things without fully understanding what’s
+              happening beneath the surface. I think there’s real value in
+              resisting that tendency. A big part of my approach to engineering
+              is understanding systems deeply — the abstractions, tradeoffs, and
+              implementation details behind the software I build.
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Outside of code, I work as a{" "}
-              <span className="text-primary">ski instructor</span>—an
-              experience that's taught me discipline, clear communication, and
-              the ability to break down complex concepts for different audiences.
-              Skills that translate directly into writing better software and
-              collaborating with teams.
+              Before studying software engineering, I competed in alpine skiing
+              at a national level. That meant waking up early every weekend to
+              train, spending entire seasons around the sport, and pursuing it
+              with a level of discipline that shaped a big part of who I am
+              today. I also had the opportunity to train across multiple winters
+              in the northern hemisphere, including in places like X, Y, and Z.
+              Following something so seriously from a young age taught me
+              consistency, discipline, and how to stay committed to long-term
+              goals.{" "}
+            </p>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Later, at 17, I earned my professional{" "}
+              <span className="text-primary">ski instructor </span>
+              certification. Teaching both kids and adults helped me develop
+              clear communication skills, patience, and the ability to adapt to
+              very different people and learning styles.
             </p>
 
             {/* Terminal-style element */}
@@ -47,13 +59,13 @@ const AboutSection = () => {
                 <span className="text-primary">$</span> cat interests.txt
               </p>
               <p className="text-foreground mt-1">
-                web development, system design, open source, skiing ⛷️
+                understanding systems, building software, alpine skiing ⛷️
               </p>
               <p className="text-muted-foreground mt-2">
                 <span className="text-primary">$</span> echo $STATUS
               </p>
               <p className="text-foreground mt-1">
-                Open to internship opportunities 🚀
+                Open to internship opportunities!
               </p>
               <p className="text-muted-foreground mt-2">
                 <span className="text-primary">$</span>{" "}

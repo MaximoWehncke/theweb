@@ -11,34 +11,19 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "E-Commerce Platform",
+    title: "Moneytrackker",
     description:
-      "Full-stack e-commerce app with cart, checkout, and Stripe integration. Built for a course project and handles real payment flows.",
-    tech: ["React", "Node.js", "PostgreSQL", "Stripe"],
-    github: "https://github.com",
-    demo: "https://example.com",
-  },
-  {
-    title: "Task Management API",
-    description:
-      "RESTful API with JWT auth, role-based access control, and real-time WebSocket notifications for team collaboration.",
-    tech: ["Express", "TypeScript", "MongoDB", "Socket.io"],
-    github: "https://github.com",
-  },
-  {
-    title: "Weather Dashboard",
-    description:
-      "Responsive weather app pulling live data from OpenWeather API with location search, 5-day forecasts, and chart visualizations.",
-    tech: ["React", "Tailwind CSS", "Chart.js", "REST API"],
-    github: "https://github.com",
-    demo: "https://example.com",
-  },
-  {
-    title: "Dev Portfolio CLI",
-    description:
-      "A terminal-style portfolio you can run with npx. Showcases projects, skills, and contact info in a fun interactive CLI format.",
-    tech: ["Node.js", "TypeScript", "Ink", "CLI"],
-    github: "https://github.com",
+      "Personal finance tracker with expense and income management, category breakdowns, and paginated transaction history. Built with a local-first development workflow using Supabase migrations, Docker, and Row Level Security for per-user data isolation.",
+    tech: [
+      "React",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "TanStack Router",
+      "TanStack Query",
+    ],
+    github: "https://github.com/MaximoWehncke/moneytrackker",
+    demo: "https://monetrackker.maximowehncke.com",
   },
 ];
 

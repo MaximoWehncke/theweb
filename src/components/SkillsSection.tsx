@@ -4,15 +4,15 @@ import { SectionHeading } from "./ProjectsSection";
 const skillGroups = [
   {
     category: "Languages",
-    skills: ["JavaScript", "TypeScript", "Python", "Java", "SQL", "HTML/CSS"],
+    skills: ["TypeScript", "Java", "C", "Python", "SQL"],
   },
   {
     category: "Frameworks & Libraries",
-    skills: ["React", "Node.js", "Express", "Tailwind CSS", "Next.js"],
+    skills: ["React", "Node.js", "Spring Boot"],
   },
   {
     category: "Tools & Technologies",
-    skills: ["Git", "Docker", "PostgreSQL", "MongoDB", "Linux", "REST APIs", "CI/CD"],
+    skills: ["Git", "Docker", "PostgreSQL", "Linux"],
   },
 ];
 

@@ -106,7 +106,7 @@ const HeroSection = () => {
           className="max-w-2xl"
         >
           <p className="text-primary text-sm mb-4 tracking-wider">
-						{portfolio.hero.mini_intro}
+            {portfolio.hero.mini_intro}
           </p>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-4">
             <span className="text-foreground">{portfolio.hero.title}</span>
@@ -117,8 +117,8 @@ const HeroSection = () => {
           </h2>
           <p className="text-muted-foreground max-w-lg mb-10 leading-relaxed text-sm md:text-base">
             Software Engineering student passionate about crafting clean,
-            efficient, and user-focused applications. Currently seeking
-            internship opportunities to grow and contribute.
+            efficient applications. Currently seeking internship opportunities
+            to grow and contribute.
           </p>
 
           <div className="flex gap-4 flex-wrap">

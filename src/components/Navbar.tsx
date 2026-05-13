@@ -21,7 +21,9 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : ""
+        scrolled
+          ? "bg-background/90 backdrop-blur-md border-b border-border"
+          : ""
       }`}
     >
       <div className="container flex items-center justify-between h-16">
@@ -45,7 +47,7 @@ const Navbar = () => {
           ))}
           <li>
             <a
-              href="/cv.pdf"
+              href="Maximo-Wehncke-CV.pdf"
               className="text-sm px-4 py-2 rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
             >
               Resume
@@ -80,7 +82,7 @@ const Navbar = () => {
             ))}
             <li>
               <a
-                href="/CV.pdf"
+                href="Maximo-Wehncke-CV.pdf"
                 className="text-sm px-4 py-2 rounded-md border border-primary text-primary inline-block"
               >
                 Resume
