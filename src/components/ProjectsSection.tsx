@@ -23,7 +23,7 @@ const projects: Project[] = [
       "TanStack Query",
     ],
     github: "https://github.com/MaximoWehncke/moneytrackker",
-    demo: "https://monetrackker.maximowehncke.com",
+    demo: "https://moneytrackker.maximowehncke.com",
   },
 ];
 
