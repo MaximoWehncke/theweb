@@ -35,10 +35,9 @@ const AboutSection = () => {
               train, spending entire seasons around the sport, and pursuing it
               with a level of discipline that shaped a big part of who I am
               today. I also had the opportunity to train across multiple winters
-              in the northern hemisphere, including in places like X, Y, and Z.
-              Following something so seriously from a young age taught me
-              consistency, discipline, and how to stay committed to long-term
-              goals.{" "}
+              on places like France, Italy and United States. Following
+              something so seriously from a young age taught me consistency,
+              discipline, and how to stay committed to long-term goals.{" "}
             </p>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Later, at 17, I earned my professional{" "}
