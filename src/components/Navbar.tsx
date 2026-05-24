@@ -29,7 +29,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16">
         <a href="#" className="text-lg font-bold tracking-tight">
           <span className="text-primary">&lt;</span>
-          <span className="text-foreground">dev</span>
+          <span className="text-foreground">MW</span>
           <span className="text-primary">/&gt;</span>
         </a>
 

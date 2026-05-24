@@ -19,7 +19,7 @@ const HeroSection = () => {
         }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       />
-      
+
       <motion.div
         className="absolute bottom-[15%] left-[0%] w-[250px] h-[250px] md:w-[500px] md:h-[500px] rounded-full bg-primary/[0.18] md:bg-primary/[0.22] blur-[70px] md:blur-[110px]"
         animate={{
@@ -115,21 +115,27 @@ const HeroSection = () => {
           className="max-w-2xl"
         >
           <p className="text-primary text-sm mb-4 tracking-wider">
-            {portfolio.hero.mini_intro}
+            Hi! My name is
           </p>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-4">
-            <span className="text-foreground">{portfolio.hero.title}</span>
+            <span className="text-foreground">Maximo Wehncke</span>
             <span className="text-primary">.</span>
           </h1>
-          <h2 className="text-2xl md:text-4xl font-bold text-muted-foreground mb-6">
-            I like building things.
+          <h2 className="text-2xl md:text-4xl md:whitespace-nowrap font-bold text-muted-foreground mb-6">
+            Software engineer in the making.
           </h2>
-          <p className="text-muted-foreground max-w-lg mb-10 leading-relaxed text-sm md:text-base">
-            Software Engineering student passionate about crafting clean,
-            efficient applications. Currently seeking internship opportunities
-            to grow and contribute.
+          <p className="text-muted-foreground mb-10 leading-relaxed text-sm md:text-base md:whitespace-nowrap">
+            CS student at{" "}
+            <a
+              href="https://itba.edu.ar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground underline hover:text-primary transition-colors underline-offset-4 hover:underline"
+            >
+              ITBA
+            </a>
+            . Sports enthusiast. Building full-stack apps.
           </p>
-
           <div className="flex gap-4 flex-wrap">
             <a
               href="#projects"
