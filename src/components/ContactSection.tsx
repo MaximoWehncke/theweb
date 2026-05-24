@@ -13,13 +13,13 @@ const contacts = [
     icon: Link,
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/m%C3%A1ximo-wehncke-b02197248/",
-    display: "linkedin.com/in/maxiomwehncke",
+    display: "linkedin.com/in/maximowehncke",
   },
   {
     icon: Mail,
     label: "Email",
-    href: "mailto:maximowehncke@gmail.com",
-    display: "maximowehncke@gmail.com",
+    href: "mailto:contactme!@maximowehncke.com",
+    display: "contactme!@maximowehncke.com",
   },
 ];
 
@@ -38,8 +38,8 @@ const ContactSection = () => {
         >
           <p className="text-muted-foreground text-sm leading-relaxed mb-8">
             I'm currently looking for internship opportunities. Whether you have
-            a question or just want to say hi, feel free to reach out—I'll do my
-            best to get back to you.
+            a question or just want to say hi, feel free to reach out. Let's
+            talk!
           </p>
 
           <div className="space-y-4">
@@ -63,7 +63,7 @@ const ContactSection = () => {
           </div>
 
           <a
-            href="mailto:maximowehncke@gmail.com"
+            href="mailto:hello@maximowehncke.com"
             className="inline-block mt-10 px-6 py-3 rounded-md bg-primary text-primary-foreground font-medium text-sm hover:opacity-90 transition-opacity"
           >
             Say Hello

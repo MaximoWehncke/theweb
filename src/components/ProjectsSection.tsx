@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Code2 } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface Project {
   title: string;
@@ -13,7 +14,7 @@ const projects: Project[] = [
   {
     title: "Moneytrackker",
     description:
-      "Personal finance tracker with expense and income management, category breakdowns, and paginated transaction history. Built with a local-first development workflow using Supabase migrations, Docker, and Row Level Security for per-user data isolation.",
+      "Personal finance tracker with expense and income management, category breakdowns, and transaction history. Currently developing the api on GO",
     tech: [
       "React",
       "TypeScript",
@@ -90,15 +91,27 @@ const ProjectsSection = () => {
                 {p.description}
               </p>
 
-              <div className="flex flex-wrap gap-2">
-                {p.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs px-2.5 py-1 rounded-full bg-secondary text-primary font-medium"
+              <div
+                className={`flex flex-col gap-4 ${p.demo ? "md:grid md:grid-cols-3 md:items-center" : ""}`}
+              >
+                {p.demo && (
+                  <a
+                    href={p.demo}
+                    className="w-fit px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium text-xs hover:opacity-90 transition-opacity"
                   >
-                    {t}
-                  </span>
-                ))}
+                    Try it!
+                  </a>
+                )}
+                <div className="flex flex-wrap gap-2 md:col-span-2">
+                  {p.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs px-2.5 py-1 rounded-full bg-secondary text-primary font-medium"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
