@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Cat } from "lucide-react";
+import { ExternalLink, Code2, Cat } from "lucide-react";
+import { Button } from "./ui/button";
 
 export interface Project {
   title: string;
@@ -23,7 +24,7 @@ const projects: Project[] = [
     tech: [
       "React",
       "TypeScript",
-      "Golang",
+      "Go (Golang)",
       "Chi Router",
       "PostgreSQL",
       "sqlc",
@@ -36,13 +37,116 @@ const projects: Project[] = [
     posterUrl: "/images/og-image.png",
   },
   {
-    title: "Operating System Kernel & Userland",
+    title: "Valise - Hotel Management",
     category: "University",
     description:
-      "A 64-bit bare-metal operating system kernel built from scratch in C and x86-64 Assembly. Features a preemptive priority scheduler, custom Buddy memoryallocator, POSIX-style semaphores, anonymous IPC pipes, VGA graphics, and hardware audio drivers.",
+      "Multi-tiered hospitality and hotel management platform for owners, staff, and guests. Built with a Spring MVC & Spring Security REST API, Hibernate/JPA, and PostgreSQL backend, integrated with a React 19 SPA featuring TanStack Router, TanStack Query, and i18next internationalization.",
+    tech: [
+      "Java",
+      "Spring Boot",
+      "Spring Security",
+      "PostgreSQL",
+      "React",
+      "TypeScript",
+      "TanStack Router",
+      "TanStack Query",
+      "Tailwind CSS",
+    ],
+    github: "https://github.com/MaximoWehncke/paw-2025b-02",
+    posterUrl: "/images/og-image.png",
+  },
+  {
+    title: "MatchPoint",
+    category: "University",
+    description:
+      "Full-stack sports venue booking and matchmaking platform built as a monorepo. Features a Remix (React) web app with server-side API routes deployed on Vercel, paired with a React Native (Expo) mobile application and PostgreSQL database.",
+    tech: [
+      "Remix",
+      "React",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Vercel",
+    ],
+    github: "https://github.com/MaximoWehncke/TPE-IS1",
+    posterUrl: "/images/og-image.png",
+  },
+  {
+    title: "SOCKS5 Proxy & Management Server",
+    category: "University",
+    description:
+      "High-performance, non-blocking asynchronous SOCKS5 proxy server built from scratch in C using POSIX I/O multiplexing (select/pselect/epoll) and finite state machines (FSM). Includes an out-of-band SCTP/TCP management protocol client, user authentication, and Docker benchmark suite.",
     tech: [
       "C",
-      "Assembly",
+      "POSIX Sockets",
+      "FSM",
+      "SOCKS5 Protocol",
+      "SCTP",
+      "Docker",
+      "Makefile",
+    ],
+    github: "https://github.com/MaximoWehncke/Socks5Proxy",
+    posterUrl: "/images/og-image.png",
+  },
+  {
+    title: "CPlus Compiler Toolchain",
+    category: "University",
+    description:
+      "A custom programming language compiler toolchain built with Flex (lexical analysis), Bison (LALR parsing), C, and CMake. Performs AST construction, semantic analysis, symbol table management, and target code generation.",
+    tech: [
+      "C",
+      "Flex",
+      "Bison",
+      "CMake",
+      "AST & Parsing",
+      "Compiler Design",
+      "Docker",
+    ],
+    github: "https://github.com/MaximoWehncke/cplus",
+    posterUrl: "/images/og-image.png",
+  },
+  {
+    title: "FlowPay - Mobile Payment Platform",
+    category: "University",
+    description:
+      "Native Android mobile digital wallet built in Kotlin using Jetpack Compose and Material Design 3. Features real-time balance streaming with reactive StateFlow, multi-language support (English/Spanish), dynamic dark mode, and tablet layouts.",
+    tech: [
+      "Kotlin",
+      "Jetpack Compose",
+      "Android",
+      "Material Design 3",
+      "StateFlow",
+      "REST API",
+      "Gradle",
+    ],
+    github: "https://github.com/MaximoWehncke/TP3_HCI_2025",
+    posterUrl: "/images/og-image.png",
+  },
+  {
+    title: "Vector Paint Canvas Studio",
+    category: "University",
+    description:
+      "An object-oriented vector graphics drawing desktop engine built in Java and JavaFX. Features layered canvas state management, geometric shape hierarchy (Circles, Ellipses, Rectangles, Squares), movable/copiable interfaces, undo/redo state tracking, and custom rendering.",
+    tech: [
+      "Java",
+      "JavaFX",
+      "Object-Oriented Design",
+      "Design Patterns",
+      "UML Architecture",
+    ],
+    github: "https://github.com/MaximoWehncke/TPE-POO-2024",
+    posterUrl: "/images/og-image.png",
+  },
+  {
+    title: "x86-64 OS Kernel & Userland",
+    category: "University",
+    description:
+      "A 64-bit bare-metal operating system kernel built from scratch in C and x86-64 Assembly. Features a preemptive priority scheduler, custom Buddy memory allocator, POSIX-style semaphores, anonymous IPC pipes, VGA graphics, and hardware audio drivers.",
+    tech: [
+      "C",
+      "x86-64 Assembly",
       "OS Kernels",
       "Preemptive Scheduling",
       "IPC & Semaphores",
@@ -50,7 +154,7 @@ const projects: Project[] = [
       "VGA Drivers",
       "QEMU",
     ],
-    github: "https://github.com/lmoliveto/TP2-SO-2025",
+    github: "https://github.com/MaximoWehncke/x86-64-os",
     posterUrl: "/images/og-image.png",
     videoUrl: "/videos/so.webm",
   },
@@ -167,7 +271,7 @@ const ProjectCard = ({ p }: { p: Project }) => {
         {p.slug && (
           <a
             href={`/projects/${p.slug}`}
-            className="text-sm text-sidebar-accent-foreground hover:underline mb-4 block"
+            className="text-sm text-primary hover:underline mb-4 block"
           >
             Read full case study &rarr;
           </a>
