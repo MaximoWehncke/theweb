@@ -52,7 +52,7 @@ const projects: Project[] = [
       "TanStack Query",
       "Tailwind CSS",
     ],
-    github: "https://github.com/MaximoWehncke/paw-2025b-02",
+    github: "https://github.com/paw-2025b-02/tp0",
     posterUrl: "/images/og-image.png",
   },
   {
@@ -70,7 +70,7 @@ const projects: Project[] = [
       "Tailwind CSS",
       "Vercel",
     ],
-    github: "https://github.com/MaximoWehncke/TPE-IS1",
+    github: "https://github.com/itba-tpietravallo/TPE-IS1",
     posterUrl: "/images/og-image.png",
   },
   {
@@ -87,7 +87,7 @@ const projects: Project[] = [
       "Docker",
       "Makefile",
     ],
-    github: "https://github.com/MaximoWehncke/Socks5Proxy",
+    github: "https://github.com/Protos-2025/Socks5Proxy",
     posterUrl: "/images/og-image.png",
   },
   {
@@ -104,7 +104,7 @@ const projects: Project[] = [
       "Compiler Design",
       "Docker",
     ],
-    github: "https://github.com/MaximoWehncke/cplus",
+    github: "https://github.com/TLA-2025-0mega/cplus",
     posterUrl: "/images/og-image.png",
   },
   {
@@ -121,7 +121,7 @@ const projects: Project[] = [
       "REST API",
       "Gradle",
     ],
-    github: "https://github.com/MaximoWehncke/TP3_HCI_2025",
+    github: "https://github.com/fspivak/TP3_HCI_2025",
     posterUrl: "/images/og-image.png",
   },
   {
@@ -136,7 +136,7 @@ const projects: Project[] = [
       "Design Patterns",
       "UML Architecture",
     ],
-    github: "https://github.com/MaximoWehncke/TPE-POO-2024",
+    github: "https://github.com/itba-tpietravallo/TPE-POO-2024",
     posterUrl: "/images/og-image.png",
   },
   {
@@ -154,7 +154,7 @@ const projects: Project[] = [
       "VGA Drivers",
       "QEMU",
     ],
-    github: "https://github.com/MaximoWehncke/x86-64-os",
+    github: "https://github.com/lmoliveto/TP2-SO-2025",
     posterUrl: "/images/og-image.png",
     videoUrl: "/videos/so.webm",
   },
