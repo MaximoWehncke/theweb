@@ -138,6 +138,7 @@ const projects: Project[] = [
     ],
     github: "https://github.com/itba-tpietravallo/TPE-POO-2024",
     posterUrl: "/images/og-image.png",
+    videoUrl: "/videos/poo.webm",
   },
   {
     title: "x86-64 OS Kernel & Userland",
