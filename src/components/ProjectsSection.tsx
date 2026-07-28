@@ -203,20 +203,20 @@ const ProjectCard = ({ p }: { p: Project }) => {
             muted
             playsInline
             poster={p.posterUrl}
-            className="w-full h-full object-contain bg-slate-950"
+            className="w-full h-full object-cover"
           >
             <source src={p.videoUrl} type="video/webm" />
             <img
               src={p.posterUrl}
               alt={p.title}
-              className="w-full h-full object-contain bg-slate-950"
+              className="w-full h-full object-cover"
             />
           </video>
         ) : (
           <img
             src={p.posterUrl}
             alt={p.title}
-            className="w-full h-full object-contain bg-slate-950"
+            className="w-full h-full object-cover"
           />
         )}
         <div className="absolute top-3 right-3 z-10">
