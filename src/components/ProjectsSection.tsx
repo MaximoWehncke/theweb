@@ -89,6 +89,7 @@ const projects: Project[] = [
     ],
     github: "https://github.com/Protos-2025/Socks5Proxy",
     posterUrl: "/images/og-image.png",
+    videoUrl: "/videos/protos.webm",
   },
   {
     title: "CPlus Compiler Toolchain",
