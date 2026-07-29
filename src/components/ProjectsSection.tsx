@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Code2, Cat } from "lucide-react";
+import { ExternalLink, Code2, Cat, Play } from "lucide-react";
 import { Button } from "./ui/button";
 
 export interface Project {
@@ -180,6 +180,7 @@ const ProjectCard = ({ p }: { p: Project }) => {
 
   const handleMouseEnter = () => {
     if (videoRef.current) {
+      videoRef.current.currentTime = 0;
       videoRef.current.play().catch(() => {});
     }
   };
@@ -187,7 +188,6 @@ const ProjectCard = ({ p }: { p: Project }) => {
   const handleMouseLeave = () => {
     if (videoRef.current) {
       videoRef.current.pause();
-      videoRef.current.load();
     }
   };
 
@@ -200,28 +200,38 @@ const ProjectCard = ({ p }: { p: Project }) => {
     >
       <div className="relative aspect-video w-full bg-muted overflow-hidden border-b border-border">
         {p.videoUrl ? (
-          <video
-            ref={videoRef}
-            loop
-            muted
-            playsInline
-            poster={p.posterUrl}
-            className="w-full h-full object-cover"
-          >
-            <source src={p.videoUrl} type="video/webm" />
+          <>
             <img
               src={p.posterUrl}
               alt={p.title}
               className="w-full h-full object-cover"
             />
-          </video>
+            <video
+              ref={videoRef}
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+            >
+              <source src={p.videoUrl} type="video/webm" />
+            </video>
+          </>
         ) : (
           <img
             src={p.posterUrl}
             alt={p.title}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
+
+        {/* Video Preview indicator badge */}
+        {p.videoUrl && (
+          <div className="absolute bottom-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/70 backdrop-blur-md text-white/90 text-xs font-medium border border-white/15 group-hover:opacity-0 transition-opacity duration-300 pointer-events-none">
+            <Play size={12} className="fill-current text-primary" />
+            <span>Video Preview</span>
+          </div>
+        )}
+
         <div className="absolute top-3 right-3 z-10">
           <span
             className={`text-xs px-2.5 py-1 rounded-full font-medium backdrop-blur-md ${
