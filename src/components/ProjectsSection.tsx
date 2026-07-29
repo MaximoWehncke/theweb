@@ -106,6 +106,7 @@ const projects: Project[] = [
     ],
     github: "https://github.com/TLA-2025-0mega/cplus",
     posterUrl: "/images/og-image.png",
+    videoUrl: "/videos/tla.webm",
   },
   {
     title: "FlowPay - Mobile Payment Platform",
