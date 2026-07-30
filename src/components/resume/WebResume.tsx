@@ -1,0 +1,228 @@
+import { resumeData } from "@/lib/resume";
+import { Mail, Phone, MapPin, Briefcase, GraduationCap, Code, Languages, Heart, Compass } from "lucide-react";
+
+export default function WebResume() {
+  const { personalInfo, skills, interests, languages, hobbies, experience, education } = resumeData;
+
+  return (
+    <div className="w-full bg-background text-foreground font-mono leading-relaxed space-y-8 select-none">
+      {/* Header section with glow background */}
+      <header className="relative border border-border p-6 md:p-8 rounded-lg bg-card/50 overflow-hidden shadow-[var(--glow-orange)] transition-all duration-300 hover:shadow-[var(--glow-orange-strong)]">
+        {/* Subtle decorative glowing orb */}
+        <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-gradient-orange mb-2">
+              {personalInfo.name}
+            </h1>
+            <div className="flex flex-wrap gap-2 mb-4">
+              {personalInfo.titles.map((title, idx) => (
+                <span 
+                  key={idx}
+                  className="px-2.5 py-0.5 rounded text-xs font-semibold bg-primary/10 text-primary border border-primary/20"
+                >
+                  {title}
+                </span>
+              ))}
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-2 text-sm text-muted-foreground w-full md:w-auto">
+            <a 
+              href={`mailto:${personalInfo.email}`} 
+              className="flex items-center gap-2 hover:text-primary transition-colors py-0.5"
+            >
+              <Mail className="h-4 w-4 text-primary shrink-0" />
+              <span className="truncate">{personalInfo.email}</span>
+            </a>
+            <a 
+              href={`tel:${personalInfo.phone}`} 
+              className="flex items-center gap-2 hover:text-primary transition-colors py-0.5"
+            >
+              <Phone className="h-4 w-4 text-primary shrink-0" />
+              <span>{personalInfo.phone}</span>
+            </a>
+            <div className="flex items-center gap-2 py-0.5">
+              <MapPin className="h-4 w-4 text-primary shrink-0" />
+              <span className="truncate">{personalInfo.location}</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Profile Summary */}
+      <section className="border border-border p-6 rounded-lg bg-card/30">
+        <h2 className="text-lg font-bold text-primary mb-3 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
+          <span className="w-1.5 h-4 bg-primary inline-block rounded-sm"></span>
+          Summary
+        </h2>
+        <p className="text-muted-foreground text-sm leading-relaxed text-justify">
+          {personalInfo.summary}
+        </p>
+      </section>
+
+      {/* Main Grid Content */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        {/* Left column: Experience & Education */}
+        <div className="md:col-span-2 space-y-8">
+          
+          {/* Experience */}
+          <section className="space-y-6">
+            <h2 className="text-lg font-bold text-primary flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
+              <span className="w-1.5 h-4 bg-primary inline-block rounded-sm"></span>
+              Experience
+            </h2>
+            <div className="space-y-6">
+              {experience.map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="group relative pl-4 border-l-2 border-border hover:border-primary transition-all duration-300"
+                >
+                  {/* Timeline bullet dot */}
+                  <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-border group-hover:bg-primary transition-colors" />
+                  
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 mb-2">
+                    <div>
+                      <h3 className="font-bold text-foreground text-base group-hover:text-primary transition-colors">
+                        {item.role}
+                      </h3>
+                      <p className="text-sm text-primary/80 font-medium">
+                        {item.company}
+                      </p>
+                    </div>
+                    <span className="text-xs text-muted-foreground whitespace-nowrap bg-muted/50 px-2 py-0.5 rounded border border-border">
+                      {item.period}
+                    </span>
+                  </div>
+                  
+                  <ul className="list-none space-y-1.5 text-sm text-muted-foreground">
+                    {item.bullets.map((bullet, bulletIdx) => (
+                      <li key={bulletIdx} className="flex items-start gap-2">
+                        <span className="text-primary mt-1 shrink-0">•</span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Education */}
+          <section className="space-y-6">
+            <h2 className="text-lg font-bold text-primary flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
+              <span className="w-1.5 h-4 bg-primary inline-block rounded-sm"></span>
+              Education
+            </h2>
+            <div className="space-y-6">
+              {education.map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="group relative pl-4 border-l-2 border-border hover:border-primary transition-all duration-300"
+                >
+                  {/* Timeline bullet dot */}
+                  <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-border group-hover:bg-primary transition-colors" />
+                  
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                    <div>
+                      <h3 className="font-bold text-foreground text-base group-hover:text-primary transition-colors">
+                        {item.degree}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {item.institution}
+                      </p>
+                    </div>
+                    <span className="text-xs text-muted-foreground whitespace-nowrap bg-muted/50 px-2 py-0.5 rounded border border-border">
+                      {item.period}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+        </div>
+
+        {/* Right column: Skills, Languages, Interests, Hobbies */}
+        <div className="space-y-8">
+          
+          {/* Skills */}
+          <section className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]">
+            <h2 className="text-base font-bold text-primary mb-4 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
+              <Code className="h-4 w-4 shrink-0" />
+              Skills
+            </h2>
+            <div className="flex flex-col gap-2">
+              {skills.map((skill, idx) => (
+                <div 
+                  key={idx}
+                  className="text-xs border border-border bg-card/60 rounded px-3 py-2 text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-card transition-all duration-300"
+                >
+                  {skill}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Languages */}
+          <section className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]">
+            <h2 className="text-base font-bold text-primary mb-4 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
+              <Languages className="h-4 w-4 shrink-0" />
+              Languages
+            </h2>
+            <div className="space-y-3">
+              {languages.map((item, idx) => (
+                <div key={idx} className="flex justify-between items-center text-sm">
+                  <span className="font-bold text-foreground">{item.language}</span>
+                  <span className="text-xs text-muted-foreground bg-muted/60 px-2 py-0.5 rounded border border-border">
+                    {item.fluency}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Interests */}
+          <section className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]">
+            <h2 className="text-base font-bold text-primary mb-4 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
+              <Compass className="h-4 w-4 shrink-0" />
+              Interests
+            </h2>
+            <div className="flex flex-col gap-2">
+              {interests.map((interest, idx) => (
+                <div 
+                  key={idx}
+                  className="text-xs border border-border bg-card/60 rounded px-3 py-2 text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-card transition-all duration-300"
+                >
+                  {interest}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Hobbies */}
+          <section className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]">
+            <h2 className="text-base font-bold text-primary mb-4 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
+              <Heart className="h-4 w-4 shrink-0" />
+              Hobbies
+            </h2>
+            <div className="flex flex-wrap gap-1.5">
+              {hobbies.map((hobby, idx) => (
+                <span 
+                  key={idx}
+                  className="text-xs bg-muted/40 hover:bg-muted text-muted-foreground hover:text-foreground px-2.5 py-1 rounded border border-border transition-colors duration-200"
+                >
+                  {hobby}
+                </span>
+              ))}
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+    </div>
+  );
+}

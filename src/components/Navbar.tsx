@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Button } from "./ui/button";
+import { useNavigate } from "@tanstack/react-router";
 
 const links = [
   { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
+  // { label: "Skills", href: "#skills" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
@@ -11,6 +13,7 @@ const links = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -46,12 +49,13 @@ const Navbar = () => {
             </li>
           ))}
           <li>
-            <a
-              href="Maximo-Wehncke-CV.pdf"
-              className="text-sm px-4 py-2 rounded-md border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200"
+            <Button
+              onClick={() => navigate({ to: "/resume" })}
+              variant="outline"
+              className="text-sm px-4 py-2 rounded-md border border-primary text-primary inline-block"
             >
               Resume
-            </a>
+            </Button>
           </li>
         </ul>
 
@@ -81,12 +85,13 @@ const Navbar = () => {
               </li>
             ))}
             <li>
-              <a
-                href="Maximo-Wehncke-CV.pdf"
+              <Button
+                onClick={() => navigate({ to: "/resume" })}
+                variant="outline"
                 className="text-sm px-4 py-2 rounded-md border border-primary text-primary inline-block"
               >
                 Resume
-              </a>
+              </Button>
             </li>
           </ul>
         </div>
