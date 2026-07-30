@@ -86,7 +86,7 @@ export const resumeData: ResumeData = {
     },
     {
       role: "Ski Instructor",
-      company: "Cerro Chapelco",
+      company: "Cerro Chapelco. San Martín de los Andes, Nequén, Argentina",
       period: "Winter Seasons 2021 & 2022",
       bullets: [
         "Conducted individual and group ski lessons.",
@@ -99,6 +99,11 @@ export const resumeData: ResumeData = {
       degree: "Software Engineering",
       institution: "Instituto Tecnológico de Buenos Aires (ITBA)",
       period: "March 2022 – Present",
+    },
+    {
+      degree: "Exchange Semester",
+      institution: "Politecnico di Torino, Turin, Italy",
+      period: "February 2026 – July 2026",
     },
     {
       degree: "Bachelor of Economics",
