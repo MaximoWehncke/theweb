@@ -1,13 +1,17 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Code2, Cat, Play } from "lucide-react";
 import { Button } from "./ui/button";
 
 export interface Project {
+  id?: string;
   title: string;
+  subject?: string;
   category: "Personal" | "University";
   description: string;
   tech: string[];
+  concepts?: string[];
+  objectives?: string;
   github: string;
   demo?: string;
   videoUrl?: string;
@@ -17,10 +21,10 @@ export interface Project {
 
 const projects: Project[] = [
   {
+    id: "moneytrackker",
     title: "Moneytrackker",
     category: "Personal",
-    description:
-      "Full-stack financial management platform for tracking expenses, income, and category budgets with real-time updates. Features a high-performance Go REST API built with Chi, sqlc, and PostgreSQL with JWT authentication, paired with a modern React SPA powered by TanStack Router, TanStack Query, and Tailwind CSS.",
+    description: `Full-stack financial management platform for tracking expenses, income, and category budgets with real-time updates. Features a high-performance Go REST API built with Chi, and PostgreSQL with JWT authentication, paired with a React SPA powered by TanStack Router, TanStack Query, and Tailwind CSS.`,
     tech: [
       "React",
       "TypeScript",
@@ -32,34 +36,43 @@ const projects: Project[] = [
       "TanStack Router",
       "Tailwind CSS",
     ],
+    concepts: ["JWT Authentication", "REST API Design"],
+    objectives:
+      "I wanted to learn how to develop a REST API in Go, see the benefits in performance, and understand how to keep a full-stack app production-ready and available.",
     github: "https://github.com/MaximoWehncke/moneytrackker",
     demo: "https://moneytrackker.maximowehncke.com",
     posterUrl: "/images/og-image.png",
   },
   {
+    id: "valise",
     title: "Valise - Hotel Management",
     category: "University",
-    description:
-      "Multi-tiered hospitality and hotel management platform for owners, staff, and guests. Built with a Spring MVC & Spring Security REST API, Hibernate/JPA, and PostgreSQL backend, integrated with a React 19 SPA featuring TanStack Router, TanStack Query, and i18next internationalization.",
+    subject: "Web Application Project",
+    description: `Multi-tiered hospitality and hotel management platform for owners, staff, and guests. Built with a Spring MVC & Spring Security REST API, Hibernate/JPA, and PostgreSQL backend, integrated with a React 19 SPA featuring TanStack Router, TanStack Query, and i18next internationalization.`,
     tech: [
       "Java",
       "Spring Boot",
       "Spring Security",
+      "Hibernate/JPA",
       "PostgreSQL",
       "React",
       "TypeScript",
       "TanStack Router",
       "TanStack Query",
       "Tailwind CSS",
+      "i18next",
     ],
+    concepts: ["Multi-tenant Architecture", "Role-based Access Control"],
+    objectives: `The course objective was to first learn the traditional, more server-side inclined way of developing a web application using JSP, then build a backend with the goal of clearly understanding the REST and HATEOAS concepts.`,
     github: "https://github.com/paw-2025b-02/tp0",
     posterUrl: "/images/og-image.png",
   },
   {
+    id: "matchpoint",
     title: "MatchPoint",
     category: "University",
-    description:
-      "Full-stack sports venue booking and matchmaking platform built as a monorepo. Features a Remix (React) web app with server-side API routes deployed on Vercel, paired with a React Native (Expo) mobile application and PostgreSQL database.",
+    subject: "Software Engineering I",
+    description: `Full-stack sports venue booking and matchmaking platform built as a monorepo. Features a Remix (React) web app with server-side API routes deployed on Vercel, paired with a React Native (Expo) mobile application and PostgreSQL database.`,
     tech: [
       "Remix",
       "React",
@@ -70,50 +83,59 @@ const projects: Project[] = [
       "Tailwind CSS",
       "Vercel",
     ],
+    concepts: ["Monorepo Architecture", "Matchmaking Algorithms"],
+    objectives: `The course objective was to learn how to develop the full pipeline, from initial development to a production-ready application that effectively solves a real-life problem, picking up concepts such as SCRUM and CI/CD along the way.`,
     github: "https://github.com/itba-tpietravallo/TPE-IS1",
     posterUrl: "/images/og-image.png",
   },
   {
+    id: "socks5-proxy",
     title: "SOCKS5 Proxy & Management Server",
     category: "University",
-    description:
-      "High-performance, non-blocking asynchronous SOCKS5 proxy server built from scratch in C using POSIX I/O multiplexing (select/pselect/epoll) and finite state machines (FSM). Includes an out-of-band SCTP/TCP management protocol client, user authentication, and Docker benchmark suite.",
+    subject: "Communication Protocols",
+    description: `High-performance, non-blocking asynchronous SOCKS5 proxy server built from scratch in C using POSIX I/O multiplexing (select/pselect/epoll) and finite state machines (FSM). Includes an out-of-band SCTP/TCP management protocol client, user authentication, and Docker benchmark suite.`,
     tech: [
       "C",
       "POSIX Sockets",
-      "FSM",
       "SOCKS5 Protocol",
       "SCTP",
       "Docker",
       "Makefile",
     ],
+    concepts: [
+      "Finite State Machines",
+      "I/O Multiplexing (select/epoll)",
+      "Non-blocking I/O",
+    ],
+    objectives: `The course objective was to apply all the concepts and protocols learned in class to develop the proxy, learning how to use POSIX I/O multiplexing to implement a non-blocking asynchronous server.`,
     github: "https://github.com/Protos-2025/Socks5Proxy",
     posterUrl: "/images/og-image.png",
     videoUrl: "/videos/protos.webm",
   },
   {
+    id: "cplus-compiler",
     title: "CPlus Compiler Toolchain",
     category: "University",
-    description:
-      "A custom programming language compiler toolchain built with Flex (lexical analysis), Bison (LALR parsing), C, and CMake. Performs AST construction, semantic analysis, symbol table management, and target code generation.",
-    tech: [
-      "C",
-      "Flex",
-      "Bison",
-      "CMake",
-      "AST & Parsing",
+    subject: "Language Theory and Compilers",
+    description: `A custom programming language compiler toolchain built with Flex (lexical analysis), Bison (LALR parsing), C, and CMake. Performs AST construction, semantic analysis, symbol table management, and target code generation.`,
+    tech: ["C", "Flex", "Bison", "CMake", "Docker"],
+    concepts: [
+      "AST Construction",
+      "Semantic Analysis",
+      "LALR Parsing",
       "Compiler Design",
-      "Docker",
     ],
+    objectives: `The course objective was to narrow the gap between the theory and practice of compiler design, learning how to use Flex and Bison to build a compiler.`,
     github: "https://github.com/TLA-2025-0mega/cplus",
     posterUrl: "/images/og-image.png",
     videoUrl: "/videos/tla.webm",
   },
   {
+    id: "flowpay",
     title: "FlowPay - Mobile Payment Platform",
     category: "University",
-    description:
-      "Native Android mobile digital wallet built in Kotlin using Jetpack Compose and Material Design 3. Features real-time balance streaming with reactive StateFlow, multi-language support (English/Spanish), dynamic dark mode, and tablet layouts.",
+    subject: "Human-Computer Interaction",
+    description: `Native Android mobile digital wallet built in Kotlin using Jetpack Compose and Material Design 3. Features real-time balance streaming with reactive StateFlow, multi-language support (English/Spanish), dynamic dark mode, and tablet layouts.`,
     tech: [
       "Kotlin",
       "Jetpack Compose",
@@ -123,40 +145,43 @@ const projects: Project[] = [
       "REST API",
       "Gradle",
     ],
+    concepts: ["Reactive State Management", "Internationalization (i18n)"],
+    objectives: `The course objective was to learn the main concepts of HCI, such as user interface, user experience, and user behavior.`,
     github: "https://github.com/fspivak/TP3_HCI_2025",
     posterUrl: "/images/og-image.png",
   },
   {
+    id: "vector-paint",
     title: "Vector Paint Canvas Studio",
     category: "University",
-    description:
-      "An object-oriented vector graphics drawing desktop engine built in Java and JavaFX. Features layered canvas state management, geometric shape hierarchy (Circles, Ellipses, Rectangles, Squares), movable/copiable interfaces, undo/redo state tracking, and custom rendering.",
-    tech: [
-      "Java",
-      "JavaFX",
+    subject: "Object-Oriented Programming",
+    description: `An object-oriented vector graphics drawing desktop engine built in Java and JavaFX. Features layered canvas state management, geometric shape hierarchy (Circles, Ellipses, Rectangles, Squares), movable/copiable interfaces, undo/redo state tracking, and custom rendering.`,
+    tech: ["Java", "JavaFX"],
+    concepts: [
       "Object-Oriented Design",
       "Design Patterns",
       "UML Architecture",
+      "Undo/Redo State Tracking",
     ],
+    objectives: `The course objective was to solidify the Object-Oriented Design concepts learned in class.`,
     github: "https://github.com/itba-tpietravallo/TPE-POO-2024",
     posterUrl: "/images/og-image.png",
     videoUrl: "/videos/poo.webm",
   },
   {
+    id: "x86-kernel",
     title: "x86-64 OS Kernel & Userland",
     category: "University",
-    description:
-      "A 64-bit bare-metal operating system kernel built from scratch in C and x86-64 Assembly. Features a preemptive priority scheduler, custom Buddy memory allocator, POSIX-style semaphores, anonymous IPC pipes, VGA graphics, and hardware audio drivers.",
-    tech: [
-      "C",
-      "x86-64 Assembly",
-      "OS Kernels",
+    subject: "Operating Systems",
+    description: `A 64-bit bare-metal operating system kernel built from scratch in C and x86-64 Assembly. Features a preemptive priority scheduler, custom Buddy memory allocator, POSIX-style semaphores, anonymous IPC pipes, VGA graphics, and hardware audio drivers.`,
+    tech: ["C", "x86-64 Assembly", "VGA Drivers", "QEMU"],
+    concepts: [
       "Preemptive Scheduling",
       "IPC & Semaphores",
       "Buddy Memory Allocator",
-      "VGA Drivers",
-      "QEMU",
+      "OS Kernel Design",
     ],
+    objectives: `The course objective was to apply, in practice, all the theoretical concepts learned in class — such as processes, scheduling, and memory allocation — to develop a kernel that can run on a real machine.`,
     github: "https://github.com/lmoliveto/TP2-SO-2025",
     posterUrl: "/images/og-image.png",
     videoUrl: "/videos/so.webm",
@@ -177,6 +202,9 @@ const item = {
 
 const ProjectCard = ({ p }: { p: Project }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [activeTab, setActiveTab] = useState<"overview" | "objectives">(
+    "overview",
+  );
 
   const handleMouseEnter = () => {
     if (videoRef.current) {
@@ -240,7 +268,7 @@ const ProjectCard = ({ p }: { p: Project }) => {
                 : "bg-primary/20 text-primary border border-primary/30"
             }`}
           >
-            {p.category}
+            {p.subject ? `${p.category} • ${p.subject}` : p.category}
           </span>
         </div>
       </div>
@@ -276,9 +304,42 @@ const ProjectCard = ({ p }: { p: Project }) => {
           </div>
         </div>
 
-        <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">
-          {p.description}
-        </p>
+        {/* Tab Switcher for Overview / Objectives */}
+        {p.objectives && (
+          <div className="flex items-center gap-1 mb-4 border-b border-border/50 pb-2">
+            <button
+              onClick={() => setActiveTab("overview")}
+              className={`text-xs font-medium px-2.5 py-1 rounded-md transition-colors ${
+                activeTab === "overview"
+                  ? "bg-secondary text-primary font-semibold shadow-xs"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              }`}
+            >
+              Overview
+            </button>
+            <button
+              onClick={() => setActiveTab("objectives")}
+              className={`text-xs font-medium px-2.5 py-1 rounded-md transition-colors ${
+                activeTab === "objectives"
+                  ? "bg-secondary text-primary font-semibold shadow-xs"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              }`}
+            >
+              Objectives
+            </button>
+          </div>
+        )}
+
+        {/* Tab Content */}
+        {activeTab === "overview" || !p.objectives ? (
+          <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">
+            {p.description}
+          </p>
+        ) : (
+          <div className="bg-muted/30 border-l-2 border-primary p-3.5 rounded-r-md mb-5 flex-1 text-sm text-muted-foreground leading-relaxed italic">
+            {p.objectives}
+          </div>
+        )}
 
         {/* For future deep dive */}
         {p.slug && (
@@ -288,6 +349,20 @@ const ProjectCard = ({ p }: { p: Project }) => {
           >
             Read full case study &rarr;
           </a>
+        )}
+
+        {/* Concepts */}
+        {p.concepts && p.concepts.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {p.concepts.map((concept) => (
+              <span
+                key={concept}
+                className="text-[11px] px-2 py-0.5 rounded border border-border/60 bg-muted/40 text-muted-foreground font-medium"
+              >
+                {concept}
+              </span>
+            ))}
+          </div>
         )}
 
         {/* Tech Stack */}
@@ -311,6 +386,14 @@ const ProjectsSection = () => {
     <section id="projects" className="section-spacing">
       <div className="container">
         <SectionHeading number="01" title="Projects" />
+
+        <p className="text-muted-foreground text-base mb-8 leading-relaxed">
+          Here are some of the projects I’ve worked on. The university projects
+          were developed throughout my studies at ITBA in collaboration with
+          friends and colleagues, while the personal projects are my own
+          individual work, built independently to explore new ideas and
+          workflows.
+        </p>
 
         <motion.div
           variants={container}
