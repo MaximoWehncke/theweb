@@ -42,17 +42,21 @@ export const resumeData: ResumeData = {
     email: "maximowehncke@gmail.com",
     phone: "(+54) 92972 507823",
     location: "Arcos 1167, CABA, Buenos Aires",
-    summary:
-      "Motivated and versatile student with a passion for both software and sports. Raised in a small southern Argentinian town, bringing grounded work ethic and strong adaptability to every challenge. Certified ski instructor with great interpersonal abilities. Used to balancing academic commitment with hands-on work, whether it's tackling complex programming challenges or teaching on the slopes. Enthusiastic about continuous learning, teamwork, and solving practical problems.",
+    summary: `Software Engineering student at ITBA. 
+		Focused on backend systems and infrastructure — REST APIs, authentication, and low-level
+		networking — with projects ranging from a solo Go-based finance API to a collaborative SOCKS5 
+		proxy built in C. Also a certified ski instructor, having taught at Cerro Chapelco.`,
   },
   skills: [
-    "Adapting to new software",
-    "Assist in Object-Oriented (OOP) Programming labs",
-    "Communicate technical ideas clearly",
+    "Backend API design & authentication (REST, JWT)",
+    "Systems programming in C (I/O multiplexing, finite state machines)",
+    "Go, Java, TypeScript across production and coursework projects",
+    "Communicate technical concepts clearly (OOP teaching assistant)",
   ],
   interests: [
-    "Artificial intelligence / machine learning",
-    "Videogame developing",
+    "Backend systems & network programming",
+    "API design & authentication (REST, JWT)",
+    "Self-hosted infrastructure (VPS, Docker, reverse proxies)",
   ],
   languages: [
     { language: "Spanish", fluency: "Native" },
@@ -63,7 +67,7 @@ export const resumeData: ResumeData = {
     "Volleyball",
     "Skiing",
     "Reading",
-    "Traveling",
+    "Running",
   ],
   experience: [
     {
