@@ -1,4 +1,3 @@
-import { portfolio } from "@/data/portfolio";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -134,7 +133,7 @@ const HeroSection = () => {
             >
               ITBA
             </a>
-            . Sports enthusiast. Building full-stack apps.
+            . Former competitive skier. Love building backend.
           </p>
           <div className="flex gap-4 flex-wrap">
             <a
