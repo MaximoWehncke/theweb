@@ -1,15 +1,34 @@
+import { motion } from "framer-motion";
 import { resumeData } from "@/lib/resume";
 import {
   Mail,
   Phone,
   MapPin,
-  Briefcase,
-  GraduationCap,
   Code,
   Languages,
   Heart,
   Compass,
 } from "lucide-react";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.25, 0.1, 0.25, 1.0] },
+  },
+};
 
 export default function WebResume() {
   const {
@@ -23,9 +42,17 @@ export default function WebResume() {
   } = resumeData;
 
   return (
-    <div className="w-full bg-background text-foreground font-mono leading-relaxed space-y-8 select-none">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="w-full bg-background text-foreground font-mono leading-relaxed space-y-8 select-none"
+    >
       {/* Header section with glow background */}
-      <header className="relative border border-border p-6 md:p-8 rounded-lg bg-card/50 overflow-hidden shadow-[var(--glow-orange)] transition-all duration-300 hover:shadow-[var(--glow-orange-strong)]">
+      <motion.header
+        variants={itemVariants}
+        className="relative border border-border p-6 md:p-8 rounded-lg bg-card/50 overflow-hidden shadow-[var(--glow-orange)] transition-all duration-300 hover:shadow-[var(--glow-orange-strong)]"
+      >
         {/* Subtle decorative glowing orb */}
         <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -83,10 +110,13 @@ export default function WebResume() {
             </div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Profile Summary */}
-      <section className="border border-border p-6 rounded-lg bg-card/30">
+      <motion.section
+        variants={itemVariants}
+        className="border border-border p-6 rounded-lg bg-card/30"
+      >
         <h2 className="text-lg font-bold text-primary mb-3 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
           <span className="w-1.5 h-4 bg-primary inline-block rounded-sm"></span>
           Summary
@@ -94,14 +124,14 @@ export default function WebResume() {
         <p className="text-muted-foreground text-sm leading-relaxed text-justify">
           {personalInfo.summary}
         </p>
-      </section>
+      </motion.section>
 
       {/* Main Grid Content */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Left column: Experience & Education */}
         <div className="md:col-span-2 space-y-8">
           {/* Experience */}
-          <section className="space-y-6">
+          <motion.section variants={itemVariants} className="space-y-6">
             <h2 className="text-lg font-bold text-primary flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
               <span className="w-1.5 h-4 bg-primary inline-block rounded-sm"></span>
               Experience
@@ -146,10 +176,10 @@ export default function WebResume() {
                 </div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
           {/* Education */}
-          <section className="space-y-6">
+          <motion.section variants={itemVariants} className="space-y-6">
             <h2 className="text-lg font-bold text-primary flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
               <span className="w-1.5 h-4 bg-primary inline-block rounded-sm"></span>
               Education
@@ -185,13 +215,16 @@ export default function WebResume() {
                 </div>
               ))}
             </div>
-          </section>
+          </motion.section>
         </div>
 
         {/* Right column: Skills, Languages, Interests, Hobbies */}
         <div className="space-y-8">
           {/* Skills */}
-          <section className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]">
+          <motion.section
+            variants={itemVariants}
+            className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]"
+          >
             <h2 className="text-base font-bold text-primary mb-4 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
               <Code className="h-4 w-4 shrink-0" />
               Skills
@@ -206,10 +239,13 @@ export default function WebResume() {
                 </div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
           {/* Languages */}
-          <section className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]">
+          <motion.section
+            variants={itemVariants}
+            className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]"
+          >
             <h2 className="text-base font-bold text-primary mb-4 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
               <Languages className="h-4 w-4 shrink-0" />
               Languages
@@ -229,10 +265,13 @@ export default function WebResume() {
                 </div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
           {/* Interests */}
-          <section className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]">
+          <motion.section
+            variants={itemVariants}
+            className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]"
+          >
             <h2 className="text-base font-bold text-primary mb-4 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
               <Compass className="h-4 w-4 shrink-0" />
               Interests
@@ -247,10 +286,13 @@ export default function WebResume() {
                 </div>
               ))}
             </div>
-          </section>
+          </motion.section>
 
           {/* Hobbies */}
-          <section className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]">
+          <motion.section
+            variants={itemVariants}
+            className="border border-border p-5 rounded-lg bg-card/20 shadow-[0_4px_12px_-4px_rgba(0,0,0,0.5)]"
+          >
             <h2 className="text-base font-bold text-primary mb-4 flex items-center gap-2 tracking-wider uppercase border-b border-border pb-1">
               <Heart className="h-4 w-4 shrink-0" />
               Hobbies
@@ -265,9 +307,9 @@ export default function WebResume() {
                 </span>
               ))}
             </div>
-          </section>
+          </motion.section>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
