@@ -134,7 +134,7 @@ const HeroSection = () => {
             >
               ITBA
             </a>
-            . Sports enthusiast. Building full-stack apps.
+            . Former competitive skier. Love building backend.
           </p>
           <div className="flex gap-4 flex-wrap">
             <a
