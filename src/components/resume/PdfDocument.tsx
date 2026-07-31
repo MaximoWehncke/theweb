@@ -402,9 +402,20 @@ export default function PdfDocument() {
                   <View style={styles.entryHeaderRow}>
                     <View style={{ flex: 1, paddingRight: 4 }}>
                       <Text style={styles.entryRole}>{item.degree}</Text>
-                      <Text style={styles.entryCompany}>
-                        {item.institution}
-                      </Text>
+                      <Text style={styles.entryCompany}>{item.institution}</Text>
+                      {item.location && (
+                        <View style={styles.entryLocationRow}>
+                          <Svg viewBox="0 0 24 24" style={styles.locationIcon}>
+                            <Path
+                              fill={colors.textMuted}
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
+                            />
+                          </Svg>
+                          <Text style={styles.entryLocationText}>
+                            {item.location}
+                          </Text>
+                        </View>
+                      )}
                     </View>
                     <View style={styles.entryPeriodBadge}>
                       <Text style={styles.entryPeriodText}>{item.period}</Text>

@@ -18,6 +18,7 @@ export interface ExperienceItem {
 export interface EducationItem {
   degree: string;
   institution: string;
+  location: string;
   period: string;
 }
 
@@ -107,22 +108,25 @@ export const resumeData: ResumeData = {
     {
       degree: "Software Engineering",
       institution: "Instituto Tecnológico de Buenos Aires (ITBA)",
+      location: "Buenos Aires, Argentina",
       period: "March 2022 – Present",
     },
     {
       degree: "Exchange Semester",
-      institution: "Politecnico di Torino, Turin, Italy",
+      institution: "Politecnico di Torino",
+      location: "Turin, Italy",
       period: "February 2026 – July 2026",
     },
     {
       degree: "Bachelor of Economics",
-      institution:
-        "Colegio San Pablo Apóstol, San Martín de los Andes, Neuquén, Argentina",
+      institution: "Colegio San Pablo Apóstol",
+      location: "San Martín de los Andes, Argentina",
       period: "March 2017 – December 2021",
     },
     {
       degree: "Level 1 Ski Instructor Course",
       institution: "AADIDESS",
+      location: "San Martín de los Andes, Argentina",
       period: "Winter Season 2020",
     },
   ],
