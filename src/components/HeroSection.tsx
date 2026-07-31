@@ -1,4 +1,3 @@
-import { portfolio } from "@/data/portfolio";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";

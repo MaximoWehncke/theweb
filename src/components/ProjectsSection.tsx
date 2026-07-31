@@ -7,6 +7,7 @@ export interface Project {
   id?: string;
   title: string;
   subject?: string;
+  inProgress: boolean;
   category: "Personal" | "University";
   description: string;
   tech: string[];
@@ -24,6 +25,7 @@ const projects: Project[] = [
     id: "moneytrackker",
     title: "Moneytrackker",
     category: "Personal",
+    inProgress: true,
     description: `Full-stack financial management platform for tracking expenses, income, and category budgets with real-time updates. Features a high-performance Go REST API built with Chi, and PostgreSQL with JWT authentication, paired with a React SPA powered by TanStack Router, TanStack Query, and Tailwind CSS.`,
     tech: [
       "React",
@@ -47,6 +49,7 @@ const projects: Project[] = [
     id: "socks5-proxy",
     title: "SOCKS5 Proxy & Management Server",
     category: "University",
+    inProgress: false,
     subject: "Communication Protocols",
     description: `High-performance, non-blocking asynchronous SOCKS5 proxy server built from scratch in C using POSIX I/O multiplexing (select/pselect/epoll) and finite state machines (FSM). Includes an out-of-band SCTP/TCP management protocol client, user authentication, and Docker benchmark suite.`,
     tech: [
@@ -71,6 +74,7 @@ const projects: Project[] = [
     id: "x86-kernel",
     title: "x86-64 OS Kernel & Userland",
     category: "University",
+    inProgress: false,
     subject: "Operating Systems",
     description: `A 64-bit bare-metal operating system kernel built from scratch in C and x86-64 Assembly. Features a preemptive priority scheduler, custom Buddy memory allocator, POSIX-style semaphores, anonymous IPC pipes, VGA graphics, and hardware audio drivers.`,
     tech: ["C", "x86-64 Assembly", "VGA Drivers", "QEMU"],
@@ -89,6 +93,7 @@ const projects: Project[] = [
     id: "cplus-compiler",
     title: "CPlus Compiler Toolchain",
     category: "University",
+    inProgress: false,
     subject: "Language Theory and Compilers",
     description: `A custom programming language compiler toolchain built with Flex (lexical analysis), Bison (LALR parsing), C, and CMake. Performs AST construction, semantic analysis, symbol table management, and target code generation.`,
     tech: ["C", "Flex", "Bison", "CMake", "Docker"],
@@ -107,6 +112,7 @@ const projects: Project[] = [
     id: "valise",
     title: "Valise - Hotel Management",
     category: "University",
+    inProgress: false,
     subject: "Web Application Project",
     description: `Multi-tiered hospitality and hotel management platform for owners, staff, and guests. Built with a Spring MVC & Spring Security REST API, Hibernate/JPA, and PostgreSQL backend, integrated with a React 19 SPA featuring TanStack Router, TanStack Query, and i18next internationalization.`,
     tech: [
@@ -131,6 +137,7 @@ const projects: Project[] = [
     id: "matchpoint",
     title: "MatchPoint",
     category: "University",
+    inProgress: false,
     subject: "Software Engineering I",
     description: `Full-stack sports venue booking and matchmaking platform built as a monorepo. Features a Remix (React) web app with server-side API routes deployed on Vercel, paired with a React Native (Expo) mobile application and PostgreSQL database.`,
     tech: [
@@ -152,6 +159,7 @@ const projects: Project[] = [
     id: "vector-paint",
     title: "Vector Paint Canvas Studio",
     category: "University",
+    inProgress: false,
     subject: "Object-Oriented Programming",
     description: `An object-oriented vector graphics drawing desktop engine built in Java and JavaFX. Features layered canvas state management, geometric shape hierarchy (Circles, Ellipses, Rectangles, Squares), movable/copiable interfaces, undo/redo state tracking, and custom rendering.`,
     tech: ["Java", "JavaFX"],
@@ -170,6 +178,7 @@ const projects: Project[] = [
     id: "flowpay",
     title: "FlowPay - Mobile Payment Platform",
     category: "University",
+    inProgress: false,
     subject: "Human-Computer Interaction",
     description: `Native Android mobile digital wallet built in Kotlin using Jetpack Compose and Material Design 3. Features real-time balance streaming with reactive StateFlow, multi-language support (English/Spanish), dynamic dark mode, and tablet layouts.`,
     tech: [
@@ -227,6 +236,19 @@ const ProjectCard = ({ p }: { p: Project }) => {
       onMouseLeave={handleMouseLeave}
     >
       <div className="relative aspect-video w-full bg-muted overflow-hidden border-b border-border">
+        {/* In Progress Badge */}
+        {p.inProgress && (
+          <div className="absolute top-3 left-3 z-10">
+            <span className="flex items-center gap-1.5 text-[10px] px-2 py-1 rounded-full font-bold uppercase tracking-wider bg-primary/20 text-primary border border-primary/30 backdrop-blur-md">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
+              </span>
+              In Progress
+            </span>
+          </div>
+        )}
+
         {p.videoUrl ? (
           <>
             <img
