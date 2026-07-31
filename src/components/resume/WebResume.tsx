@@ -120,9 +120,15 @@ export default function WebResume() {
                       <h3 className="font-bold text-foreground text-base group-hover:text-primary transition-colors">
                         {item.role}
                       </h3>
-                      <p className="text-sm text-primary/80 font-medium">
+                      <p className="text-sm font-semibold text-primary">
                         {item.company}
                       </p>
+                      {item.location && (
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground/80 font-normal mt-0.5 mb-1.5">
+                          <MapPin className="h-3 w-3 text-primary/70 shrink-0" />
+                          <span>{item.location}</span>
+                        </div>
+                      )}
                     </div>
                     <span className="text-xs text-muted-foreground whitespace-nowrap bg-muted/50 px-2 py-0.5 rounded border border-border">
                       {item.period}

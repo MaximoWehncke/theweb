@@ -10,6 +10,7 @@ export interface PersonalInfo {
 export interface ExperienceItem {
   role: string;
   company: string;
+  location: string;
   period: string;
   bullets: string[];
 }
@@ -39,10 +40,10 @@ export const resumeData: ResumeData = {
   personalInfo: {
     name: "Máximo Augusto Wehncke",
     titles: ["Software Engineering Student", "Ski Instructor"],
-    email: "maximowehncke@gmail.com",
+    email: "resume@maximowehncke.com",
     phone: "(+54) 92972 507823",
     location: "Arcos 1167, CABA, Buenos Aires",
-    summary: `Software Engineering student at ITBA. 
+    summary: `Software Engineering student at Instituto Tecnológico de Buenos Aires (ITBA). 
 		Focused on backend systems and infrastructure — REST APIs, authentication, and low-level
 		networking — with projects ranging from a solo Go-based finance API to a collaborative SOCKS5 
 		proxy built in C. Also a certified ski instructor, having taught at Cerro Chapelco.`,
@@ -61,6 +62,7 @@ export const resumeData: ResumeData = {
   languages: [
     { language: "Spanish", fluency: "Native" },
     { language: "English", fluency: "Upper Intermediate" },
+    { language: "Italian", fluency: "Basic" },
   ],
   hobbies: [
     "Playing guitar / drums",
@@ -72,7 +74,8 @@ export const resumeData: ResumeData = {
   experience: [
     {
       role: "Object Oriented Programming (OOP) Assistant",
-      company: "Instituto Tecnológico de Buenos Aires (ITBA)",
+      company: "ITBA",
+      location: "Buenos Aires, Argentina",
       period: "August 2024 – Present",
       bullets: [
         "Guide students with basic and intermediate Java programming tasks.",
@@ -83,6 +86,7 @@ export const resumeData: ResumeData = {
     {
       role: "Real Estate Sales Assistant",
       company: "Tierras del Sur Negocios Inmobiliarios y Rurales",
+      location: "San Martín de los Andes, Argentina",
       period: "January 2025 – February 2025",
       bullets: [
         "Accompanied clients to property viewings, including remote or hard-to-access locations.",
@@ -90,7 +94,8 @@ export const resumeData: ResumeData = {
     },
     {
       role: "Ski Instructor",
-      company: "Cerro Chapelco. San Martín de los Andes, Nequén, Argentina",
+      company: "Cerro Chapelco",
+      location: "San Martín de los Andes, Argentina",
       period: "Winter Seasons 2021 & 2022",
       bullets: [
         "Conducted individual and group ski lessons.",

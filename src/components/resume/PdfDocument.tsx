@@ -5,6 +5,8 @@ import {
   View,
   Image,
   StyleSheet,
+  Svg,
+  Path,
 } from "@react-pdf/renderer";
 import { resumeData } from "@/lib/resume";
 
@@ -157,7 +159,7 @@ const styles = StyleSheet.create({
   },
   // Experience & Education Entries
   entryBlock: {
-    marginBottom: 8,
+    marginBottom: 10,
   },
   entryHeaderRow: {
     flexDirection: "row",
@@ -175,6 +177,26 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica-Bold",
     color: colors.primary,
   },
+  entryLocationRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 3,
+    marginTop: 2,
+    marginBottom: 1,
+  },
+  locationIcon: {
+    width: 7,
+    height: 7,
+    alignSelf: "center",
+    marginTop: 0.5,
+  },
+  entryLocationText: {
+    fontSize: 7.5,
+    color: colors.textMuted,
+    fontFamily: "Helvetica",
+    lineHeight: 1,
+    alignSelf: "center",
+  },
   entryPeriodBadge: {
     backgroundColor: colors.cardBg,
     paddingVertical: 1.5,
@@ -190,22 +212,24 @@ const styles = StyleSheet.create({
     color: colors.textMuted,
   },
   bulletList: {
-    marginTop: 2,
-    gap: 2,
+    marginTop: 9,
+    gap: 0.5,
   },
   bulletItem: {
     flexDirection: "row",
-    gap: 4,
+    gap: 1,
     fontSize: 8,
     color: colors.textMedium,
   },
   bulletDot: {
     color: colors.primary,
     fontFamily: "Helvetica-Bold",
+    fontSize: 8,
+    lineHeight: 1.2,
   },
   bulletText: {
     flex: 1,
-    lineHeight: 1.35,
+    lineHeight: 1.2,
   },
   // Right Column Cards
   cardBox: {
@@ -339,6 +363,19 @@ export default function PdfDocument() {
                     <View style={{ flex: 1, paddingRight: 4 }}>
                       <Text style={styles.entryRole}>{item.role}</Text>
                       <Text style={styles.entryCompany}>{item.company}</Text>
+                      {item.location && (
+                        <View style={styles.entryLocationRow}>
+                          <Svg viewBox="0 0 24 24" style={styles.locationIcon}>
+                            <Path
+                              fill={colors.textMuted}
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
+                            />
+                          </Svg>
+                          <Text style={styles.entryLocationText}>
+                            {item.location}
+                          </Text>
+                        </View>
+                      )}
                     </View>
                     <View style={styles.entryPeriodBadge}>
                       <Text style={styles.entryPeriodText}>{item.period}</Text>
