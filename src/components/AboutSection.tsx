@@ -17,38 +17,31 @@ const AboutSection = () => {
           <div className="bg-card border border-border rounded-lg p-6 md:p-8 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-start">
             <div className="space-y-4">
               <p className="text-muted-foreground text-sm leading-relaxed">
-                I'm a Software Engineering student who thrives on turning ideas
-                into working software. I'm drawn to full-stack development—I
-                enjoy the challenge of designing clean APIs just as much as
-                crafting intuitive user interfaces.
+                I'm a Software Engineering student who likes building things
+                from the ground up. I gravitate toward backend and systems work
+                — REST APIs, authentication, low-level networking — over
+                frontend development, and I'd rather understand how something
+                works underneath than just get it running. That's part of why,
+                working collaboratively at university, we've built things like a
+                proxy server and an OS kernel from scratch in C instead of
+                relying on existing libraries — I think understanding the
+                abstractions we were using is crucial.
               </p>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                As AI tools become more integrated into software development,
-                it’s becoming easier to build things without fully understanding
-                what’s happening beneath the surface. I think there’s real value
-                in resisting that tendency. A big part of my approach to
-                engineering is understanding systems deeply — the abstractions,
-                tradeoffs, and implementation details behind the software I
-                build.
-              </p>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                I was raised on a small town called San Martín de los Andes, in
+                I was raised in San Martín de los Andes, a small town in
                 Patagonia, Argentina. Before studying software engineering, I
-                competed in alpine skiing at a national level. That meant waking
-                up early every weekend to train, spending entire seasons around
-                the sport, and pursuing it with a level of discipline that
-                shaped a big part of who I am today. I also had the opportunity
-                to train across multiple winters on places like France, Italy
-                and United States. Following something so seriously from a young
-                age taught me consistency, discipline, and how to stay committed
-                to long-term goals.{" "}
+                competed in alpine skiing at a national level, training across
+                multiple winters in France, Italy, and the United States. That
+                level of commitment from a young age taught me discipline and
+                how to stick with something long-term.
               </p>
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Later, at 17, I earned my professional{" "}
                 <span className="text-primary">ski instructor </span>
-                certification. Teaching both kids and adults helped me develop
-                clear communication skills, patience, and the ability to adapt
-                to very different people and learning styles.
+                certification. Teaching both kids and adults taught me patience
+                and how to adapt to very different people and learning styles —
+                something I still notice in how I approach TAing and explaining
+                technical concepts to students today.
               </p>
             </div>
 
