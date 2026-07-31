@@ -46,7 +46,7 @@ export default function WebResume() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="w-full bg-background text-foreground font-mono leading-relaxed space-y-8 select-none"
+      className="w-full bg-background text-foreground font-mono leading-relaxed space-y-8"
     >
       {/* Header section with glow background */}
       <motion.header
