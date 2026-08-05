@@ -342,6 +342,31 @@ export default function NetworkOverlay() {
     };
   }, [smoothX, smoothY, serverSmoothX, serverSmoothY, updateSvgPath, isMobile]);
 
+  // Helper to check if a position is within the padded hero text card area
+  const isWithinHeroTextCardPadding = useCallback((x: number, y: number): boolean => {
+    if (!containerRef.current) return false;
+    const rect = containerRef.current.getBoundingClientRect();
+    const textBoxEl = containerRef.current.parentElement?.querySelector(
+      "[data-hero-text-card]",
+    ) as HTMLElement | null;
+
+    if (!textBoxEl) return false;
+
+    const boxRect = textBoxEl.getBoundingClientRect();
+    const bLeft = boxRect.left - rect.left;
+    const bRight = boxRect.right - rect.left;
+    const bTop = boxRect.top - rect.top;
+    const bBottom = boxRect.bottom - rect.top;
+    const pad = 20;
+
+    return (
+      x >= bLeft - pad &&
+      x <= bRight + pad &&
+      y >= bTop - pad &&
+      y <= bBottom + pad
+    );
+  }, []);
+
   // Helper to clamp position to safe zone (avoiding top bar and hero text card)
   const clampPosition = useCallback(
     (relX: number, relY: number): { x: number; y: number } => {
@@ -376,25 +401,18 @@ export default function NetworkOverlay() {
       }
 
       // 2. Perimeter avoidance for Hero Text Card ([data-hero-text-card])
-      const textBoxEl = containerRef.current.parentElement?.querySelector(
-        "[data-hero-text-card]",
-      ) as HTMLElement | null;
+      if (isWithinHeroTextCardPadding(finalX, finalY)) {
+        const textBoxEl = containerRef.current.parentElement?.querySelector(
+          "[data-hero-text-card]",
+        ) as HTMLElement | null;
+        if (textBoxEl) {
+          const boxRect = textBoxEl.getBoundingClientRect();
+          const bLeft = boxRect.left - rect.left;
+          const bRight = boxRect.right - rect.left;
+          const bTop = boxRect.top - rect.top;
+          const bBottom = boxRect.bottom - rect.top;
+          const pad = 20;
 
-      if (textBoxEl) {
-        const boxRect = textBoxEl.getBoundingClientRect();
-        const bLeft = boxRect.left - rect.left;
-        const bRight = boxRect.right - rect.left;
-        const bTop = boxRect.top - rect.top;
-        const bBottom = boxRect.bottom - rect.top;
-
-        const pad = 20;
-
-        if (
-          finalX >= bLeft - pad &&
-          finalX <= bRight + pad &&
-          finalY >= bTop - pad &&
-          finalY <= bBottom + pad
-        ) {
           const dLeft = Math.abs(finalX - (bLeft - pad));
           const dRight = Math.abs(bRight + pad - finalX);
           const dTop = Math.abs(finalY - (bTop - pad));
@@ -410,7 +428,7 @@ export default function NetworkOverlay() {
 
       return { x: finalX, y: finalY };
     },
-    [],
+    [isWithinHeroTextCardPadding],
   );
 
   // Global mouse tracking when enabled (with Top Bar & Hero Text Card perimeter collision avoidance)
@@ -528,7 +546,9 @@ export default function NetworkOverlay() {
         const finalClamped = clampPosition(currentTargetX, currentTargetY);
         setHops((prev) =>
           prev.map((h) =>
-            h.id === hop.id ? { ...h, x: finalClamped.x, y: finalClamped.y } : h,
+            h.id === hop.id
+              ? { ...h, x: finalClamped.x, y: finalClamped.y }
+              : h,
           ),
         );
       };
@@ -561,6 +581,8 @@ export default function NetworkOverlay() {
       if (e.key === " ") {
         e.preventDefault();
         if (attachedNodeRef.current !== null) {
+          if (hopsRef.current.length >= 20) return;
+
           let curX = 0;
           let curY = 0;
           if (attachedNodeRef.current === "client") {
@@ -727,6 +749,10 @@ export default function NetworkOverlay() {
 
       // IF UNATTACHED (LOCKED): Click creates a new proxy node
       // Collision Check: Prevent placing proxy directly on top of client or server node
+      if (isWithinHeroTextCardPadding(newX, newY)) {
+        return;
+      }
+
       const clientX = smoothX.get();
       const clientY = smoothY.get();
       const dxClient = newX - clientX;
@@ -749,6 +775,10 @@ export default function NetworkOverlay() {
         if (dx * dx + dy * dy < MIN_NODE_COLLISION_SQ) {
           return;
         }
+      }
+
+      if (hopsRef.current.length >= 20) {
+        return;
       }
 
       // Generate unique proxy label using auto-incrementing counter
@@ -812,6 +842,7 @@ export default function NetworkOverlay() {
     serverSmoothY,
     setHops,
     clampPosition,
+    isWithinHeroTextCardPadding,
     clientRawX,
     clientRawY,
     serverRawX,
@@ -1077,7 +1108,15 @@ export default function NetworkOverlay() {
     return () => {
       isCancelled = true;
     };
-  }, [isMobile, packetX, packetY, packetOpacity, packetColor]);
+  }, [
+    isMobile,
+    packetX,
+    packetY,
+    packetOpacity,
+    packetColor,
+    smoothX,
+    smoothY,
+  ]);
 
   if (isMobile) {
     return null;
@@ -1129,7 +1168,8 @@ export default function NetworkOverlay() {
               <>
                 <Lock className="w-3 h-3 text-muted-foreground" />
                 <span className="text-muted-foreground">
-                  Nodes Locked &bull; Click node to attach &bull; Click canvas for proxy
+                  Nodes Locked &bull; Click node to attach &bull; Click canvas
+                  for proxy
                 </span>
               </>
             )}
@@ -1148,10 +1188,23 @@ export default function NetworkOverlay() {
               }}
               type="button"
               title="Clear all proxy nodes (Keyboard shortcut: X)"
-              className="px-3.5 py-2 rounded-full text-[11px] font-mono font-medium border bg-card/90 text-destructive border-destructive/40 hover:bg-destructive/10 transition-all flex items-center gap-1.5 shadow-lg cursor-pointer select-none whitespace-nowrap"
+              className={cn(
+                "px-3.5 py-2 rounded-full text-[11px] font-mono font-medium border bg-card/90 text-destructive border-destructive/40 hover:bg-destructive/10 transition-all flex items-center gap-1.5 shadow-lg cursor-pointer select-none whitespace-nowrap",
+                hops.length >= 20 &&
+                  "border-amber-500/50 text-amber-600 hover:bg-amber-500/10",
+              )}
             >
-              <Trash2 className="w-3 h-3 text-destructive" />
-              <span>Clear ({hops.length})</span>
+              <Trash2
+                className={cn(
+                  "w-3 h-3 text-destructive",
+                  hops.length >= 20 && "text-amber-600",
+                )}
+              />
+              <span>
+                {hops.length >= 20
+                  ? "Max (20) Reached"
+                  : `Clear (${hops.length})`}
+              </span>
             </button>
           </div>
         )}
