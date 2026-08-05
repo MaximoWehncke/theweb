@@ -131,7 +131,7 @@ const HeroSection = () => {
         </svg>
       </div>
 
-      <div className="container relative z-10 pointer-events-none">
+      <div className="container relative z-40 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
