@@ -4,6 +4,7 @@ export interface PersonalInfo {
   email: string;
   phone: string;
   location: string;
+  website: string;
   summary: string;
 }
 
@@ -44,6 +45,7 @@ export const resumeData: ResumeData = {
     email: "resume@maximowehncke.com",
     phone: "(+54) 92972 507823",
     location: "Arcos 1167, CABA, Buenos Aires",
+    website: "www.maximowehncke.com",
     summary: `Software Engineering student at Instituto Tecnológico de Buenos Aires (ITBA). 
 		Focused on backend systems and infrastructure — REST APIs, authentication, and low-level
 		networking — with projects ranging from a solo Go-based finance API to a collaborative SOCKS5 
@@ -116,6 +118,12 @@ export const resumeData: ResumeData = {
       institution: "Politecnico di Torino",
       location: "Turin, Italy",
       period: "February 2026 – July 2026",
+    },
+    {
+      degree: "Cambridge B2 First Certificate (FCE)",
+      institution: "Cambridge Assessment English",
+      location: "San Martín de los Andes, Argentina",
+      period: "2021",
     },
     {
       degree: "Bachelor of Economics",

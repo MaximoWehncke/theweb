@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
   contactItem: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "flex-end",
     gap: 4,
   },
   // Profile Summary Section
@@ -189,6 +190,11 @@ const styles = StyleSheet.create({
     height: 7,
     alignSelf: "center",
     marginTop: 0.5,
+  },
+  icon: {
+    width: 7,
+    height: 7,
+    alignSelf: "center",
   },
   entryLocationText: {
     fontSize: 7.5,
@@ -336,9 +342,30 @@ export default function PdfDocument() {
           </View>
 
           <View style={styles.contactGrid}>
-            <Text style={styles.contactItem}>{personalInfo.email}</Text>
-            <Text style={styles.contactItem}>{personalInfo.phone}</Text>
-            <Text style={styles.contactItem}>{personalInfo.location}</Text>
+            <View style={styles.contactItem}>
+              <Svg viewBox="0 0 24 24" style={styles.icon}>
+                <Path fill={colors.textMuted} d="M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5l8.67 5.78a2 2 0 0 0 2.22 0L22 9.5V17z M22 7l-9.66 6.44a2 2 0 0 1-2.22 0L2 7V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2z" />
+              </Svg>
+              <Text>{personalInfo.email}</Text>
+            </View>
+            <View style={styles.contactItem}>
+              <Svg viewBox="0 0 24 24" style={styles.icon}>
+                <Path fill={colors.textMuted} d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </Svg>
+              <Text>{personalInfo.phone}</Text>
+            </View>
+            <View style={styles.contactItem}>
+              <Svg viewBox="0 0 24 24" style={styles.icon}>
+                <Path fill={colors.textMuted} d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
+              </Svg>
+              <Text>{personalInfo.location}</Text>
+            </View>
+            <View style={styles.contactItem}>
+              <Svg viewBox="0 0 24 24" style={styles.icon}>
+                <Path fill={colors.textMuted} d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm4-8c0-3.87-2.69-7-6-7s-6 3.13-6 7 2.69 7 6 7 6-3.13 6-7z" />
+              </Svg>
+              <Text>{personalInfo.website.replace(/^https?:\/\//, "")}</Text>
+            </View>
           </View>
         </View>
 
@@ -402,7 +429,9 @@ export default function PdfDocument() {
                   <View style={styles.entryHeaderRow}>
                     <View style={{ flex: 1, paddingRight: 4 }}>
                       <Text style={styles.entryRole}>{item.degree}</Text>
-                      <Text style={styles.entryCompany}>{item.institution}</Text>
+                      <Text style={styles.entryCompany}>
+                        {item.institution}
+                      </Text>
                       {item.location && (
                         <View style={styles.entryLocationRow}>
                           <Svg viewBox="0 0 24 24" style={styles.locationIcon}>
