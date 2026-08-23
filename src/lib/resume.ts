@@ -48,13 +48,14 @@ export const englishResumeData: ResumeData = {
     website: "www.maximowehncke.com",
     summary: `Software Engineering student at Instituto Tecnológico de Buenos Aires (ITBA). 
 		Focused on backend systems and infrastructure — REST APIs, authentication, and low-level
-		networking — with projects ranging from a solo Go-based finance API to a collaborative SOCKS5 
-		proxy built in C. Also a certified ski instructor, having taught at Cerro Chapelco.`,
+		networking — with projects ranging from a REST API built with Java and Spring to a SOCKS5 
+		proxy built from scratch in C. Also a certified ski instructor, having taught at Cerro Chapelco.`,
   },
   skills: [
     "Backend API design & authentication (REST, JWT)",
     "Systems programming in C (I/O multiplexing, finite state machines)",
     "Go, Java, TypeScript across production and coursework projects",
+    "Spring Boot / Spring Security",
     "Communicate technical concepts clearly (OOP teaching assistant)",
   ],
   interests: [
@@ -150,14 +151,15 @@ export const spanishResumeData: ResumeData = {
     website: "www.maximowehncke.com",
     summary: `Estudiante de Ingeniería Informática en el Instituto Tecnológico de Buenos Aires (ITBA). 
 		Enfocado en sistemas backend e infraestructura — APIs REST, autenticación y redes 
-		de bajo nivel — con proyectos que van desde una API financiera en Go desarrollada en 
-		solitario hasta un proxy SOCKS5 en C hecho en equipo. Instructor de esquí certificado, 
+		de bajo nivel — con proyectos que van desde una API REST desarrollada en equipo con 
+		Java y Spring hasta un proxy SOCKS5 en C hecho desde cero. Instructor de esquí certificado, 
 		habiendo enseñado en el Cerro Chapelco.`,
   },
   skills: [
     "Diseño de APIs backend y autenticación (REST, JWT)",
     "Programación de sistemas en C (multiplexación de I/O, máquinas de estado finitas)",
     "Go, Java, TypeScript en proyectos productivos y académicos",
+    "Spring Boot / Spring Security",
     "Comunicación clara de conceptos técnicos (ayudante de cátedra de POO)",
   ],
   interests: [
