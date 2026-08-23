@@ -8,7 +8,7 @@ import {
   Svg,
   Path,
 } from "@react-pdf/renderer";
-import { resumeData } from "@/lib/resume";
+import { englishResumeData, spanishResumeData } from "@/lib/resume";
 
 // High-contrast color palette optimized for printing on pure white paper
 const colors = {
@@ -205,17 +205,21 @@ const styles = StyleSheet.create({
   },
   entryPeriodBadge: {
     backgroundColor: colors.cardBg,
-    paddingVertical: 1.5,
+    paddingTop: 1.5,
+    paddingBottom: 1.5,
     paddingHorizontal: 5,
     borderRadius: 2,
     borderWidth: 0.5,
     borderColor: colors.border,
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },
   entryPeriodText: {
     fontSize: 7.5,
     color: colors.textMuted,
+    textAlign: "center",
+    lineHeight: 1,
   },
   bulletList: {
     marginTop: 9,
@@ -245,17 +249,25 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     padding: 7,
   },
-  skillPill: {
+  skillPillContainer: {
     backgroundColor: "#FFFFFF",
     borderColor: colors.border,
     borderWidth: 0.5,
     borderRadius: 3,
-    paddingVertical: 3,
+    paddingTop: 3,
+    paddingBottom: 3,
     paddingHorizontal: 5,
     marginBottom: 3.5,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "flex-start",
+  },
+  skillPillText: {
     fontSize: 7.5,
     color: colors.textDark,
-    lineHeight: 1.3,
+    lineHeight: 1,
+    textAlign: "center",
   },
   langRow: {
     flexDirection: "row",
@@ -272,17 +284,21 @@ const styles = StyleSheet.create({
   },
   langFluencyBadge: {
     backgroundColor: "#FFFFFF",
-    paddingVertical: 1.5,
+    paddingTop: 1.5,
+    paddingBottom: 1.5,
     paddingHorizontal: 4.5,
     borderRadius: 2,
     borderWidth: 0.5,
     borderColor: colors.border,
-    justify: "center",
+    flexDirection: "row",
+    justifyContent: "center",
     alignItems: "center",
   },
   langFluencyText: {
     fontSize: 7.5,
     color: colors.textMuted,
+    textAlign: "center",
+    lineHeight: 1,
   },
   badgeContainer: {
     flexDirection: "row",
@@ -294,18 +310,45 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     borderWidth: 0.5,
     borderRadius: 3,
-    paddingVertical: 2,
+    paddingTop: 2,
+    paddingBottom: 2,
     paddingHorizontal: 5,
+    flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },
   hobbyBadgeText: {
     fontSize: 7.5,
     color: colors.textMedium,
+    textAlign: "center",
+    lineHeight: 1,
   },
 });
 
-export default function PdfDocument() {
+const titles = {
+  en: {
+    profileSummary: "Profile Summary",
+    experience: "Experience",
+    education: "Education",
+    skills: "Skills",
+    languages: "Languages",
+    interests: "Interests",
+    hobbies: "Hobbies",
+  },
+  es: {
+    profileSummary: "Resumen del Perfil",
+    experience: "Experiencia",
+    education: "Educación",
+    skills: "Habilidades",
+    languages: "Idiomas",
+    interests: "Intereses",
+    hobbies: "Hobbies",
+  },
+};
+
+export default function PdfDocument({ lang = "en" }: { lang?: "en" | "es" }) {
+  const resumeData = lang === "en" ? englishResumeData : spanishResumeData;
+  const t = titles[lang];
   const {
     personalInfo,
     skills,
@@ -344,25 +387,37 @@ export default function PdfDocument() {
           <View style={styles.contactGrid}>
             <View style={styles.contactItem}>
               <Svg viewBox="0 0 24 24" style={styles.icon}>
-                <Path fill={colors.textMuted} d="M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5l8.67 5.78a2 2 0 0 0 2.22 0L22 9.5V17z M22 7l-9.66 6.44a2 2 0 0 1-2.22 0L2 7V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2z" />
+                <Path
+                  fill={colors.textMuted}
+                  d="M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5l8.67 5.78a2 2 0 0 0 2.22 0L22 9.5V17z M22 7l-9.66 6.44a2 2 0 0 1-2.22 0L2 7V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v2z"
+                />
               </Svg>
               <Text>{personalInfo.email}</Text>
             </View>
             <View style={styles.contactItem}>
               <Svg viewBox="0 0 24 24" style={styles.icon}>
-                <Path fill={colors.textMuted} d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                <Path
+                  fill={colors.textMuted}
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                />
               </Svg>
               <Text>{personalInfo.phone}</Text>
             </View>
             <View style={styles.contactItem}>
               <Svg viewBox="0 0 24 24" style={styles.icon}>
-                <Path fill={colors.textMuted} d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
+                <Path
+                  fill={colors.textMuted}
+                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
+                />
               </Svg>
               <Text>{personalInfo.location}</Text>
             </View>
             <View style={styles.contactItem}>
               <Svg viewBox="0 0 24 24" style={styles.icon}>
-                <Path fill={colors.textMuted} d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm4-8c0-3.87-2.69-7-6-7s-6 3.13-6 7 2.69 7 6 7 6-3.13 6-7z" />
+                <Path
+                  fill={colors.textMuted}
+                  d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm4-8c0-3.87-2.69-7-6-7s-6 3.13-6 7 2.69 7 6 7 6-3.13 6-7z"
+                />
               </Svg>
               <Text>{personalInfo.website.replace(/^https?:\/\//, "")}</Text>
             </View>
@@ -371,7 +426,7 @@ export default function PdfDocument() {
 
         {/* Profile Summary */}
         <View style={styles.summarySection}>
-          <Text style={styles.summaryTitle}>Profile Summary</Text>
+          <Text style={styles.summaryTitle}>{t.profileSummary}</Text>
           <Text style={styles.summaryText}>
             {personalInfo.summary.replace(/\s+/g, " ").trim()}
           </Text>
@@ -383,7 +438,7 @@ export default function PdfDocument() {
           <View style={styles.leftColumn}>
             {/* Experience */}
             <View>
-              <Text style={styles.sectionHeader}>Experience</Text>
+              <Text style={styles.sectionHeader}>{t.experience}</Text>
               {experience.map((item, idx) => (
                 <View key={idx} style={styles.entryBlock} wrap={false}>
                   <View style={styles.entryHeaderRow}>
@@ -423,7 +478,7 @@ export default function PdfDocument() {
 
             {/* Education */}
             <View>
-              <Text style={styles.sectionHeader}>Education</Text>
+              <Text style={styles.sectionHeader}>{t.education}</Text>
               {education.map((item, idx) => (
                 <View key={idx} style={styles.entryBlock} wrap={false}>
                   <View style={styles.entryHeaderRow}>
@@ -459,17 +514,17 @@ export default function PdfDocument() {
           <View style={styles.rightColumn}>
             {/* Skills */}
             <View style={styles.cardBox} wrap={false}>
-              <Text style={styles.sectionHeader}>Skills</Text>
+              <Text style={styles.sectionHeader}>{t.skills}</Text>
               {skills.map((skill, idx) => (
-                <Text key={idx} style={styles.skillPill}>
-                  {skill}
-                </Text>
+                <View key={idx} style={styles.skillPillContainer}>
+                  <Text style={styles.skillPillText}>{skill}</Text>
+                </View>
               ))}
             </View>
 
             {/* Languages */}
             <View style={styles.cardBox} wrap={false}>
-              <Text style={styles.sectionHeader}>Languages</Text>
+              <Text style={styles.sectionHeader}>{t.languages}</Text>
               {languages.map((item, idx) => (
                 <View key={idx} style={styles.langRow}>
                   <Text style={styles.langName}>{item.language}</Text>
@@ -482,17 +537,17 @@ export default function PdfDocument() {
 
             {/* Interests */}
             <View style={styles.cardBox} wrap={false}>
-              <Text style={styles.sectionHeader}>Interests</Text>
+              <Text style={styles.sectionHeader}>{t.interests}</Text>
               {interests.map((interest, idx) => (
-                <Text key={idx} style={styles.skillPill}>
-                  {interest}
-                </Text>
+                <View key={idx} style={styles.skillPillContainer}>
+                  <Text style={styles.skillPillText}>{interest}</Text>
+                </View>
               ))}
             </View>
 
             {/* Hobbies */}
             <View style={styles.cardBox} wrap={false}>
-              <Text style={styles.sectionHeader}>Hobbies</Text>
+              <Text style={styles.sectionHeader}>{t.hobbies}</Text>
               <View style={styles.badgeContainer}>
                 {hobbies.map((hobby, idx) => (
                   <View key={idx} style={styles.hobbyBadge}>

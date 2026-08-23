@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { resumeData } from "@/lib/resume";
+import { englishResumeData } from "@/lib/resume";
 import {
   Mail,
   Phone,
@@ -39,7 +39,7 @@ export default function WebResume() {
     hobbies,
     experience,
     education,
-  } = resumeData;
+  } = englishResumeData;
 
   return (
     <motion.div
