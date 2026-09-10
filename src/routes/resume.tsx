@@ -26,7 +26,7 @@ function ResumePage() {
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `Maximo_Wehncke-Resume-${lang === "en" ? "EN" : "ES"}.pdf`;
+      link.download = `Maximo_Wehncke-CV-${lang === "en" ? "EN" : "ES"}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
